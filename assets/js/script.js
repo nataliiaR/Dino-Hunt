@@ -1,5 +1,4 @@
 
-$(document).ready(function() {
   var hunter = "";
   var dino = "";
   var hunter_life;
@@ -15,10 +14,13 @@ $(document).ready(function() {
 
 
   $('.dino').on('click', function () {
-    
+    if(!isHunterSelected){
+        alert("select the hunter first");
+    }
   });
 
   $('#attack').on('click', function () {
-
+      if(!isHunterSelected || !isDinoSelected){
+     alert("no player or dino");
+      }
   });
-});

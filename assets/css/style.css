@@ -1,9 +1,15 @@
-
 body{
+    height: 100%;
+}
+.container-flex{
     background-image: url("../images/theme.jpg");
+    height: 100%;
+}
+.row{
+    padding: 0em 2em;
 }
 .dino-box, .hunter-box{
-box-shadow: 0px 1px 1px 1px black;
+box-shadow: 0px 1px 1px 1px darkslategrey;
 display:block;
 float: left;
 width: 200px;
@@ -48,4 +54,11 @@ img.hunter{
 }
 .header{
     text-align: center;
+}
+label {
+    margin-left:4em;
+    padding: 0.5em 1em;
+    background-color: darkgoldenrod;
+    font-weight: bold;
+    border: 1px solid darkslategrey;
 }
