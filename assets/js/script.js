@@ -7,14 +7,29 @@
   var isDinoSelected = false;
   var dino;
   class Dino {
-    constructor(life, speed) {
+    constructor(life, speed,shield) {
         this.life = life;
         this.speed = speed;
+        this.shield = shield
     }
 }
-const tyrannosaurus = new Dino(150,20);
-const rex = new Dino(300,50);
-const triceratops = new Dino(200,30);
+const tyrannosaurus = new Dino(150,20,-20);
+const rex = new Dino(300,40,-40);
+const triceratops = new Dino(200,30,-10);
+
+
+function resetDinoSelection(){
+  console.log($(".dino-life",killedDino).text());
+  isDinoSelected=false;
+  $(".dino-name").css("background-color","grey");
+  $(".dino-life").css("background-color","grey");
+
+  if($(".dino-life",killedDino).text()==="KILLED"){
+    $(".dino-name",killedDino).css("background-color","red");
+    $(".dino-life",killedDino).css("background-color","red");
+  }
+  
+}
 
   $('div.hunter').on('click', function () {
   console.log($(this).attr('id'));
@@ -38,10 +53,11 @@ const triceratops = new Dino(200,30);
   });
 
 
-  $('.dino-box').on('click', function () {
+  $('.dino-box').on('click', function (e) {
     console.log(isHunterSelected);
+    var killed= $(".dino-life",this).text();
 
-    if(isHunterSelected && !isDinoSelected) {
+    if(isHunterSelected && !isDinoSelected && killed!=="KILLED")  {
     
         $(".dino-name",this).css("background-color","darkgreen");
         $(".dino-life",this).css("background-color","#556B2F");
@@ -77,33 +93,44 @@ const triceratops = new Dino(200,30);
       if(!isHunterSelected || !isDinoSelected){
      alert("no player or dino");
       }
-      else if (distanceToHunter>0)
+      else if (distanceToHunter>0) 
         attackTheDino(dino);
   
   });
 
-
-var distanceToHunter=200;
+ distanceToHunter=100+Math.floor(Math.random() * 50);
 
   function attackTheDino(dino){
+    $(".hunter-life",hunterSelected).text("Distance to dino "+ distanceToHunter);
     dinoStep = dino.speed+Math.floor(Math.random() * 30);
-    penetrate = 60+Math.floor(Math.random() * 10);
+    penetrate = 60+Math.floor(Math.random() * 70)+dino.shield;
     dino.life=dino.life-penetrate;
-    $(".dino-life",selectedDino).text(dino.life);
+    $(".dino-life",selectedDino).text("Life remaining " +dino.life);
 
     if (distanceToHunter>0){
 
     distanceToHunter = distanceToHunter-dinoStep;
     console.log("distance to hunter "+distanceToHunter);
-
     }
+    console.log("dinoStep "+ dinoStep);
+    console.log("penetrate "+penetrate);
     if(dino.life<0){
       alert("dino got killed");
+      $(".dino-life",selectedDino).text("KILLED");
+          
+      $(".dino-name",selectedDino).css("background-color","red");
+      $(".dino-life",selectedDino).css("background-color","red");
+      distanceToHunter=distanceToHunter+50+Math.floor(Math.random() * 100);
+      killedDino=selectedDino;
+      resetDinoSelection();
+
     }
-    if (distanceToHunter<0) {
+    if (distanceToHunter<=0) {
       console.log("do I get here");
         //$(".hunter-life",hunterSelected).text(0);
-         alert("Hunter got eaten " + $(".hunter-life",hunterSelected).text());
+      $(".hunter-life",hunterSelected).text("KILLED");     
+      $(".hunter-name",hunterSelected).css("background-color","red");
+      $(".hunter-life",hunterSelected).css("background-color","red");
     }
     
    
