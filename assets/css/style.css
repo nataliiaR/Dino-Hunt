@@ -1,10 +1,12 @@
-body{
+html body{
     height: 100%;
 }
 
 .container-flex{
     background-image: url("../images/theme.jpg");
-    height: 100%;
+    height: 100vh;
+    background-repeat: repeat-x;
+    background-position: bottom;
 }
 .row{
     padding: 0em 2em;
@@ -19,7 +21,9 @@ margin: 0.5em 1em;
 position: relative;
 
 }
-
+.hunter-header, .dino-header{
+    margin-top:2em;
+}
 img.dino{
     padding-top: 2em;
     width: 200px;
@@ -59,6 +63,7 @@ img.hunter{
 
 .header{
     text-align: center;
+    margin: 3em 0em;
 }
 label {
     margin-left:4em;
