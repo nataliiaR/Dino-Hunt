@@ -7,29 +7,21 @@
   var isDinoSelected = false;
   var dino;
   class Dino {
-    constructor(life, speed,shield) {
+    constructor(life, speed) {
         this.life = life;
         this.speed = speed;
-        this.shield = shield
     }
 }
-const tyrannosaurus = new Dino(150,20,-20);
-const rex = new Dino(300,40,-40);
-const triceratops = new Dino(200,30,-10);
-
+const tyrannosaurus = new Dino(200,20);
+const rex = new Dino(150,70);
+const triceratops = new Dino(300,30);
 
 function resetDinoSelection(){
-  console.log($(".dino-life",killedDino).text());
+  distanceToHunter=distanceToHunter+50+Math.floor(Math.random() * 100);
   isDinoSelected=false;
-  $(".dino-name").css("background-color","grey");
-  $(".dino-life").css("background-color","grey");
-
-  if($(".dino-life",killedDino).text()==="KILLED"){
-    $(".dino-name",killedDino).css("background-color","red");
-    $(".dino-life",killedDino).css("background-color","red");
   }
   
-}
+
 
   $('div.hunter').on('click', function () {
   console.log($(this).attr('id'));
@@ -103,7 +95,7 @@ function resetDinoSelection(){
   function attackTheDino(dino){
     $(".hunter-life",hunterSelected).text("Distance to dino "+ distanceToHunter);
     dinoStep = dino.speed+Math.floor(Math.random() * 30);
-    penetrate = 60+Math.floor(Math.random() * 70)+dino.shield;
+    penetrate = 60+Math.floor(Math.random() * 70);
     dino.life=dino.life-penetrate;
     $(".dino-life",selectedDino).text("Life remaining " +dino.life);
 
@@ -117,17 +109,14 @@ function resetDinoSelection(){
     if(dino.life<0){
       alert("dino got killed");
       $(".dino-life",selectedDino).text("KILLED");
-          
       $(".dino-name",selectedDino).css("background-color","red");
       $(".dino-life",selectedDino).css("background-color","red");
-      distanceToHunter=distanceToHunter+50+Math.floor(Math.random() * 100);
-      killedDino=selectedDino;
+      $(".hunter-life",hunterSelected).text("");
       resetDinoSelection();
 
     }
     if (distanceToHunter<=0) {
       console.log("do I get here");
-        //$(".hunter-life",hunterSelected).text(0);
       $(".hunter-life",hunterSelected).text("KILLED");     
       $(".hunter-name",hunterSelected).css("background-color","red");
       $(".hunter-life",hunterSelected).css("background-color","red");
@@ -136,4 +125,3 @@ function resetDinoSelection(){
    
   }
   
- 
