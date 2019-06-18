@@ -1,12 +1,43 @@
+h4 {
+    margin: 0;
+    padding: 0;
+    height: 1.2em;
+    font-size: 1.5em
+  }
+
 html body{
     height: 100%;
 }
 
+.dino-section{
+    display:none
+}
 .container-flex{
     background-image: url("../images/theme.jpg");
     height: 100vh;
     background-repeat: repeat-x;
-    background-position: bottom;
+    background-position: top;
+    position: relative;
+    background-size: 100%;
+}
+.gameIsOverLose{
+    position:absolute;
+    font-size: 5em;
+    top: 5em;
+    color: red;
+    text-shadow: 2em 2em 2em 2em grey;
+    display: none;
+    z-index: 1;
+
+}
+.gameIsOverWin{
+    position:absolute;
+    font-size: 5em;
+    top: 5em;
+    color: green;
+    display:none;
+    text-shadow: 2em 2em 2em 2em grey;
+    z-index: 1;
 }
 .row{
     padding: 0em 2em;
@@ -22,7 +53,8 @@ position: relative;
 
 }
 .hunter-header, .dino-header{
-    margin-top:2em;
+    margin-top:1em;
+    font-family: 'Rosario', sans-serif;
 }
 img.dino{
     padding-top: 2em;
@@ -63,12 +95,19 @@ img.hunter{
 
 .header{
     text-align: center;
-    margin: 3em 0em;
+    margin-bottom: 2em;
+    font-family: 'Sigmar One', cursive;
 }
 label {
-    margin-left:4em;
+    margin:1em 4em;
     padding: 0.5em 1em;
     background-color: darkgoldenrod;
     font-weight: bold;
     border: 1px solid darkslategrey;
+    display: none;
+    width: 5em;
+}
+p{
+    margin: 1.5em 1em;
+    font-family: 'Sigmar One', cursive;
 }

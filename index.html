@@ -4,11 +4,18 @@
         <title>Dino Hunt Game</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Sigmar+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Rosario&display=swap" rel="stylesheet">
+
     </head>
     <body>
         <div class="container-flex">
+            <p class="gameIsOverLose">GAME IS OVER! Dinos won!</p>
+            <p class="gameIsOverWin">GAME IS OVER! Hunter won!</p>
             <div class="row header">
                 <div class="col-12">
                     <h1> HUNT THE DINO!</h1>
@@ -16,7 +23,7 @@
             </div>
             <div class="row">
                 <div class="col-5">
-                    <h2 class="hunter-header">Your avatar!</h2>
+                    <h2 class="hunter-header">Select your avatar first!</h2>
                         <div class= "hunter hunter-box" id="hunter-1">
                             <h4 class="hunter-name">Hunter 1</h4>
                             <img class="hunter hunter-1" src="assets/images/hunter1.png" alt="hunter-image1"/>
@@ -29,19 +36,19 @@
                         </div>
                         
                 </div>
-                <div class="col-7">
+                <div class="col-7 dino-section">
                         <h2 class="dino-header">Select the dino to hunt!</h2>
-                        <div class= "dino-box" id="dino-1">
+                        <div class= "dino-box" id="dino-1" data-toggle="tooltip" title="Tyrannosaurus rex was one of the largest land carnivores of all time.">
                             <h4 class="dino-name">Tyrannosaurus</h4>
                             <img class="dino dino-1" src="assets/images/tyrannosaurus.png" alt="tyrannosaurus-image"/>
                             <div class="dino-life"></div>  
                         </div>
-                        <div class= "dino-box" id="dino-2">
-                                <h4 class="dino-name">Rex</h4>
-                                <img class="dino dino-2" src="assets/images/rex.png" alt="rex-image"/>
+                        <div class= "dino-box" id="dino-2" data-toggle="tooltip" title="Herrerasaurus had strong hind limbs with short thighs and rather long feet, indicating that it was likely a swift runner.">
+                                <h4 class="dino-name">Herrerasaurus</h4>
+                                <img class="dino dino-2" src="assets/images/herrerasaurus.png" alt="herrerasaurus-image"/>
                                 <div class="dino-life"></div>  
                             </div>
-                            <div class= "dino-box" id="dino-3">
+                            <div class= "dino-box" id="dino-3" data-toggle="tooltip" title="With its 3 horns, a parrot-like beak and a large frill that could reach nearly 1 metre (3 feet) across, the Triceratops skull is one of the largest and most striking of any land animal.">
                                     <h4 class="dino-name">Triceratops</h4>
                                     <img class="dino dino-3" src="assets/images/triceratops.png" alt="triceratops-image"/>
                                     <div class="dino-life"></div>  
