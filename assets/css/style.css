@@ -10,10 +10,11 @@ html body{
 }
 
 .dino-section{
-    display:none
+    display:none;
+
 }
 .container-flex{
-    background-image: url("../images/theme.jpg");
+    background-image: url("../images/tile3.jpg");
     height: 100vh;
     background-repeat: repeat-x;
     background-position: top;
@@ -23,7 +24,7 @@ html body{
 .gameIsOverLose{
     position:absolute;
     font-size: 5em;
-    top: 5em;
+    top: 2em;
     color: red;
     text-shadow: 2em 2em 2em 2em grey;
     display: none;
@@ -33,7 +34,7 @@ html body{
 .gameIsOverWin{
     position:absolute;
     font-size: 5em;
-    top: 5em;
+    top: 2em;
     color: green;
     display:none;
     text-shadow: 2em 2em 2em 2em grey;
@@ -55,7 +56,7 @@ cursor:pointer;
 }
 .hunter-header, .dino-header{
     margin-top:1em;
-    font-family: 'Rosario', sans-serif;
+    font-family: 'Sigmar One', cursive;
 }
 img.dino{
     padding-top: 2em;
@@ -75,7 +76,7 @@ img.hunter{
     position: absolute;
     width: 200px;
     top: 0;
-    background-color:darkgrey;
+    background-color:orange;
     text-align: center;
     color:white;
     font-weight: bold;
@@ -92,7 +93,11 @@ img.hunter{
     font-weight: bold;
 
 }
-
+.battleArea{
+    display:none;
+    font-family: 'Sigmar One', cursive;
+    margin-left: 2em;
+}
 
 .header{
     text-align: center;

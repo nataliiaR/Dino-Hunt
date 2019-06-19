@@ -30,29 +30,40 @@ function resetDinoSelection(){
   distanceToHunter=distanceToHunter+50+Math.floor(Math.random() * 100);
   isDinoSelected=false;
   $(".dino-header").text("Select another dino to hunt");
-  $(".hunter-life",hunterSelected).css("color","white")
+  $(".hunter-life",hunterSelected).css("color","white");
+
   }
 
   $('div.hunter').on('click', function () {
    if( $(this).attr('id')==="hunter-1"){
-     $("#hunter-2").hide();
+      $("#hunter-2").hide();
       isHunterSelected = true;
-      $('.hunter-name').css("background-color","darkgreen");
-      $('.hunter-life').css("background-color","#556B2F");
+      $('.hunter-name',this).css("background-color","darkgreen");
+      $('.hunter-life',this).css("background-color","#556B2F");
       hunterSelected =this;
-      $(".hunter-header").text("Hunter 1 avatar will play for you");
+      $(".hunter-header").text("Hunter 1 plays for you");
       $(".dino-section").css("display","block");
       huntAudio=arrowAudio;
+      attribute= $(this).attr("id");
+      var divelement = document.getElementById(attribute);
+      $(".hunterZone").append(divelement);
+      $(".battleArea").css("display","block");
+
    }
    else{
-    $("#hunter-1").hide();
+      $("#hunter-1").hide();
       isHunterSelected =true;
-      $(".hunter-header").text("Hunter 2 avatar will play for you")
-      $('.hunter-name').css("background-color","darkgreen");
-      $('.hunter-life').css("background-color","#556B2F");
+      $(".hunter-header").text("Hunter 2  plays for you")
+      $('.hunter-name',this).css("background-color","darkgreen");
+      $('.hunter-life',this).css("background-color","#556B2F");
       hunterSelected = this;
       $(".dino-section").css("display","block");
       huntAudio=gunAudio;
+      attribute= $(this).attr("id");
+      var divelement = document.getElementById(attribute);
+      $(".hunterZone").append(divelement);
+      $(".battleArea").css("display","block");
+
     }
    
 
@@ -61,7 +72,6 @@ function resetDinoSelection(){
 
   $('.dino-box').on('click', function (e) {
     var killed= $(".dino-life",this).text();
-
     if(isHunterSelected && !isDinoSelected && killed!=="KILLED")  {
     
         $(".dino-name",this).css("background-color","darkgreen");
@@ -93,17 +103,24 @@ function resetDinoSelection(){
         $('#attack').css("display","block");
         $(".dino-life",this).text("Dino's life " +dino.life);
         $(".hunter-life",hunterSelected).text("Distance to dino "+ distanceToHunter);
-       
+        attribute= $(this).attr("id");
+
+        //$('').css('display',"none");
+        var divelement = document.getElementById(attribute);
+        $(".battleZone").prepend(divelement);
+
+     
   }
   });
 
 
 
   $('#attack').on('click', function () {
-   if (distanceToHunter>0 && isDinoSelected===true) 
-        attackTheDino(dino);
+   if (distanceToHunter>0 && isDinoSelected===true) {
         huntAudio.load();
         huntAudio.play();
+        attackTheDino(dino);
+   }
   
   });
 
@@ -137,6 +154,11 @@ function resetDinoSelection(){
       $(".dino-life",selectedDino).css("background-color","red");
       $(".hunter-life",hunterSelected).text("");
       killedDinos=killedDinos+1;
+      attribute= $(selectedDino).attr("id");
+      console.log(attribute);
+      var divelement = document.getElementById(attribute);
+      $(".dino-section").append(divelement);
+      console.log(divelement);
       resetDinoSelection();
     }
     if (distanceToHunter<=0) {
@@ -152,7 +174,7 @@ function resetDinoSelection(){
       $('#attack').text("PLAY");
       $('#attack').attr("class","reset");
       $('.reset').on('click', function () {
-        console.log("do i get here");
+     
         location.reload();
        
        });
@@ -164,7 +186,6 @@ function resetDinoSelection(){
       $('#attack').text("PLAY");
       $('#attack').attr("reset","reset");
       $('.reset').on('click', function () {
-        console.log("do i get here");
         location.reload();
        
        });
