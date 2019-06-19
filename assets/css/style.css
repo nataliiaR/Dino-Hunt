@@ -50,6 +50,7 @@ width: 200px;
 height: 200px;
 margin: 0.5em 1em;
 position: relative;
+cursor:pointer;
 
 }
 .hunter-header, .dino-header{
@@ -74,7 +75,7 @@ img.hunter{
     position: absolute;
     width: 200px;
     top: 0;
-    background-color:grey;
+    background-color:darkgrey;
     text-align: center;
     color:white;
     font-weight: bold;
@@ -101,11 +102,14 @@ img.hunter{
 label {
     margin:1em 4em;
     padding: 0.5em 1em;
-    background-color: darkgoldenrod;
+    background-color: darkgreen;
     font-weight: bold;
     border: 1px solid darkslategrey;
     display: none;
-    width: 5em;
+    width: 7em;
+    text-align: center;
+    color:white;
+    cursor:pointer;
 }
 p{
     margin: 1.5em 1em;

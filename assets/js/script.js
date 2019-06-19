@@ -13,8 +13,8 @@ $('[data-toggle="tooltip"]').tooltip();
         this.speed = speed;
     }
 }
-const tyrannosaurus = new Dino(200,20);
-const herrerasaurus = new Dino(150,70);
+const tyrannosaurus = new Dino(300,35);
+const herrerasaurus = new Dino(250,70);
 const triceratops = new Dino(300,30);
 
 var killedDinos=0;
@@ -30,9 +30,8 @@ function resetDinoSelection(){
   distanceToHunter=distanceToHunter+50+Math.floor(Math.random() * 100);
   isDinoSelected=false;
   $(".dino-header").text("Select another dino to hunt");
+  $(".hunter-life",hunterSelected).css("color","white")
   }
-
-
 
   $('div.hunter').on('click', function () {
    if( $(this).attr('id')==="hunter-1"){
@@ -92,6 +91,8 @@ function resetDinoSelection(){
         }
         selectedDino=this;
         $('#attack').css("display","block");
+        $(".dino-life",this).text("Dino's life " +dino.life);
+        $(".hunter-life",hunterSelected).text("Distance to dino "+ distanceToHunter);
        
   }
   });
@@ -106,7 +107,7 @@ function resetDinoSelection(){
   
   });
 
- distanceToHunter=100+Math.floor(Math.random() * 50);
+ distanceToHunter=200+Math.floor(Math.random() * 100);
 
   function attackTheDino(dino){
     $(".hunter-life",hunterSelected).text("Distance to dino "+ distanceToHunter);
@@ -122,7 +123,11 @@ function resetDinoSelection(){
     if (distanceToHunter>0){
 
     distanceToHunter = distanceToHunter-dinoStep;
+    
 
+    }
+    if (distanceToHunter<=50){
+      $(".hunter-life",hunterSelected).css("color","orange");
     }
 
     if(dino.life<0){
@@ -135,6 +140,7 @@ function resetDinoSelection(){
       resetDinoSelection();
     }
     if (distanceToHunter<=0) {
+      $(".hunter-life",hunterSelected).css("color","white");
       $(".hunter-life",hunterSelected).text("KILLED");     
       $(".hunter-name",hunterSelected).css("background-color","red");
       $(".hunter-life",hunterSelected).css("background-color","red");
@@ -143,14 +149,31 @@ function resetDinoSelection(){
 
     if(killedHunter===1){
       $(".gameIsOverLose").css("display","block");
+      $('#attack').text("PLAY");
+      $('#attack').attr("class","reset");
+      $('.reset').on('click', function () {
+        console.log("do i get here");
+        location.reload();
+       
+       });
+    
     } 
     if(killedDinos===3){
 
       $(".gameIsOverWin").css("display","block");
+      $('#attack').text("PLAY");
+      $('#attack').attr("reset","reset");
+      $('.reset').on('click', function () {
+        console.log("do i get here");
+        location.reload();
+       
+       });
+    
     }
     
    
   }
+
 
 
   
