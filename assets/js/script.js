@@ -20,6 +20,12 @@ const triceratops = new Dino(300,30);
 var killedDinos=0;
 var killedHunter=0;
 
+var gunAudio = new Audio("assets/audio/Skorpion-Kibblesbob.mp3");
+var arrowAudio = new Audio("assets/audio/Throw_Knife.mp3")
+var rexAudio = new Audio("assets/audio/Tyrannosaurus Rex -SoundBible.mp3");
+var triceratopsAudio = new Audio("assets/audio/Roar-SoundBible.mp3");
+
+
 function resetDinoSelection(){
   distanceToHunter=distanceToHunter+50+Math.floor(Math.random() * 100);
   isDinoSelected=false;
@@ -35,8 +41,9 @@ function resetDinoSelection(){
       $('.hunter-name').css("background-color","darkgreen");
       $('.hunter-life').css("background-color","#556B2F");
       hunterSelected =this;
-      $(".hunter-header").text("Hunter 1 avatar will play for you")
-      $(".dino-section").css("display","block")
+      $(".hunter-header").text("Hunter 1 avatar will play for you");
+      $(".dino-section").css("display","block");
+      huntAudio=arrowAudio;
    }
    else{
     $("#hunter-1").hide();
@@ -45,7 +52,8 @@ function resetDinoSelection(){
       $('.hunter-name').css("background-color","darkgreen");
       $('.hunter-life').css("background-color","#556B2F");
       hunterSelected = this;
-      $(".dino-section").css("display","block")
+      $(".dino-section").css("display","block");
+      huntAudio=gunAudio;
     }
    
 
@@ -65,16 +73,19 @@ function resetDinoSelection(){
           
           case "Tyrannosaurus":
           dino=tyrannosaurus;
+          dinoAudio=rexAudio;
           break;
 
           case "Herrerasaurus":
           dino=herrerasaurus;
+          dinoAudio=rexAudio;
           break;
 
 
           case "Triceratops":
 
           dino=triceratops;
+          dinoAudio=triceratopsAudio;
           break;
           
 
@@ -90,6 +101,8 @@ function resetDinoSelection(){
   $('#attack').on('click', function () {
    if (distanceToHunter>0 && isDinoSelected===true) 
         attackTheDino(dino);
+        huntAudio.load();
+        huntAudio.play();
   
   });
 
@@ -101,6 +114,10 @@ function resetDinoSelection(){
     penetrate = 60+Math.floor(Math.random() * 70);
     dino.life=dino.life-penetrate;
     $(".dino-life",selectedDino).text("Life remaining " +dino.life);
+    dinoAudio.load();
+    setTimeout(function() {
+      dinoAudio.play();
+    }, 1000);
 
     if (distanceToHunter>0){
 
